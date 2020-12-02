@@ -1,0 +1,65 @@
+$theme-colors: (
+    "primary": #DFDFFF,
+    "secondary": #9F9FCF,
+);
+
+@import "~bootstrap/scss/bootstrap";
+
+$sizePicture: 100px;
+$size: 10px;
+
+body {
+    background: white;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ying-yang {
+    animation-name: rotation;
+    animation-duration: 40000ms;
+    animation-iteration-count: infinite;
+
+    width: 96px;
+    height: 48px;
+    background: white;
+    border-width: 2px 2px 50px 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 100%;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    box-sizing: content-box;
+
+    &:after {
+        content: "";
+        width: 13px;
+        height: 13px;
+        border: 18px solid black;
+        background: white;
+        border-radius: 100%;
+        position: absolute;
+        left: -1px;
+        top: 50%;
+        box-sizing: content-box;
+    }
+
+    &:before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        border: 18px solid white;
+        background: black;
+        border-radius: 100%;
+        position: absolute;
+        right: -1px;
+        top: 50%;
+        box-sizing: content-box;
+    }
+}

@@ -5,61 +5,24 @@ $theme-colors: (
 
 @import "~bootstrap/scss/bootstrap";
 
-$sizePicture: 100px;
-$size: 10px;
-
 body {
     background: white;
 }
 
-@keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    } 100% {
-        transform: rotate(360deg);
-    }
+nav {
+    margin-bottom: 20px;
 }
 
-.ying-yang {
-    animation-name: rotation;
-    animation-duration: 40000ms;
-    animation-iteration-count: infinite;
-
-    width: 96px;
-    height: 48px;
-    background: white;
-    border-width: 2px 2px 50px 2px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 100%;
-    position: absolute;
-    top: 40%;
-    left: 48%;
-    box-sizing: content-box;
-
-    &:after {
-        content: "";
-        width: 13px;
-        height: 13px;
-        border: 18px solid black;
-        background: white;
-        border-radius: 100%;
-        position: absolute;
-        left: -1px;
-        top: 50%;
-        box-sizing: content-box;
-    }
-
-    &:before {
-        content: "";
-        width: 13px;
-        height: 13px;
-        border: 18px solid white;
-        background: black;
-        border-radius: 100%;
-        position: absolute;
-        right: -1px;
-        top: 50%;
-        box-sizing: content-box;
-    }
+h1 {
+    border: 1px solid black;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 30px;
+    border-radius: 20px;
+    margin: auto;
+    color: white;
+    text-align: center;
+    display: block;
+    margin: auto;
+    width: max-content;
 }
+

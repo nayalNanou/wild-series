@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h1>Categories</h1>
+
+    <div class="container">
+        <div class="row">
+            {% for category in categories %}
+                <a class="MEDIUM_text border d-block col text-center p-3 text-secondary" href="{{ path('category_show', { categoryName: category.name }) }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </ul>
+{% endblock %}
+

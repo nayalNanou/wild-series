@@ -23,3 +23,185 @@ h1 {
 .MEDIUM_text {
     font-size: $fontsize * 1.5;
 }
+
+.poster {
+    width: 200px;
+    height: 200px;
+}
+
+.title {
+    font-size: $fontsize * 4;
+    font-weight: 1000;
+}
+
+.title2 {
+    margin-left: 20px;
+}
+
+.title3 {
+    font-size: $fontsize * 3;
+    font-weight: 800;
+}
+
+.program {
+    width: 40%;
+    border: 2px solid #DFDFFF;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background: black;
+    color: white;
+}
+
+.flex_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.retour {
+    color: white;
+    font-weight: bold;
+    font-size: $fontsize * 1.2;
+    padding: 14px;
+    border-radius: 10px;
+    margin: 20px;
+    background: #9F9FCF;
+    width: max-content;
+    transition: all ease-in-out 300ms;
+
+    &:hover {
+        transform: scale(1.1);
+        color: white;
+        text-decoration: none;
+    }
+}
+
+
+/*********************************************************
+                       /PROGRAMS/
+*********************************************************/
+
+
+.voir_fiche {
+    font-size: $fontsize * 2;
+    color: #9F9FCF;
+    transition: all ease-in-out 400ms;
+}
+
+.voir_fiche:hover {
+    color: #DFDFFF;
+    text-decoration: none;
+    transform: scale(1.2);
+}
+
+.voir_fiche:active {
+    color: #FF7F7F;
+}
+
+.image_fiche {
+    width: 170px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.image_voir_fiche {
+    transition: all ease-in-out 400ms;
+}
+
+.image_voir_fiche:hover {
+    transform: scale(1.05);
+}
+
+/*********************************************************
+                  /PROGRAMS/SHOW/{id}
+*********************************************************/
+
+
+.poster_serie {
+    border-radius: 10px;
+    margin: 0px 10px;
+}
+
+.paragraph_style_1 {
+    margin: 20px;
+    padding: 0px 20px;
+    font-size: $fontsize * 1.2;
+    font-style: italic;
+}
+
+.season {
+    padding: 0px 40px;
+    margin-bottom: 20px;
+}
+
+.title_season {
+    a {
+        color: #9F9FCF;
+        font-size: $fontsize * 1.2;
+        text-align: center;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    transition: all ease-in-out 400ms;
+
+    &:hover {
+        letter-spacing: 0.2em;
+    }
+}
+
+
+/*********************************************************
+          /PROGRAMS/{programID}/SEASON/{seasonId}
+*********************************************************/
+
+.season_serie_title {
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+.left_block {
+    width: 60%;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+.right_block {
+    width: 30%;
+    background: black;
+    color: white;
+    padding: 20px;
+
+    img {
+        width: 70%;
+        height: 300px;
+        margin: auto;
+        display: block;
+        border-radius: 10px;
+    }
+
+    p {
+        margin: 20px;
+        font-size: $fontsize * 1.4;
+        font-style: italic;
+    }
+}
+
+.season_info {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 80%;
+    padding: 20px;
+}
+
+.list_episode {
+    border: 1px solid gray;
+    padding: 20px;
+    width: max-content;
+}
+
+.episode {
+    margin: 10px 20px;
+    padding: 0px 5px;
+}

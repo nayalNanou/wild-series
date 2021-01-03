@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ program.title }} - Season {{ season.number }}{% endblock %}
+
+{% block body %}
+
+<div class="flex_wrap justify-content-between">
+    <div class="left_block">
+        <h1 class="season_serie_title">Season {{ season.number }} de {{ program.title }}</h1>
+
+        <p>{{ season.description }}</p>
+
+        <div class="list_episode">
+            <p>Liste des épisodes</p>
+
+            {% for episode in episodes %}
+                <p class="episode">Episode {{ episode.number }} : <em>{{ episode.title }}</em></p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="right_block">
+        <p><a class="retour d-block" href="{{ path("program_show", { id: program.id }) }}">Retour</a></p>
+        <img src="{{ program.poster }}" alt="{{ program.title }}" />
+        <p>{{ program.summary }}</p>
+    </div>
+</div>
+
+{% endblock %}

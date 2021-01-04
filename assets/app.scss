@@ -82,6 +82,65 @@ h1 {
 
 
 /*********************************************************
+                     GLOBAL FORM CSS
+*********************************************************/
+
+
+form {
+    padding: 20px;
+    min-width: max-content;
+    width: 30%;
+    margin: auto;
+    background: #DFDFFF;
+    box-shadow: 0px 0px 20px #DFDFFF;
+    border-radius: 6px;
+
+    input[type="text"] {
+        border-radius: 4px;
+        padding: 2px 10px;
+        width: 250px;
+    }
+
+    textarea {
+        vertical-align: top;
+        width: 250px;
+        border-radius: 4px;
+    }
+
+    select {
+        font-size: $fontsize * 1.2;
+        padding: 4px;
+        border-radius: 4px;
+        background: white;
+    }
+
+    input[type="submit"] {
+        margin: auto;
+        margin-top: 6px;
+        display: block;
+        background: linear-gradient(0deg, silver, white 10% 90%, silver);
+        padding: 6px 20px;;
+        border-radius: 4px;
+        font-size: $fontsize * 1.2;
+        border: 1px solid black;
+        transition: all ease-in-out 300ms;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    label {
+        display: inline-block;
+        width: 180px;
+        font-size: $fontsize * 1.4;
+        text-align: right;
+        margin: 14px;
+    }
+}
+
+
+/*********************************************************
                        /PROGRAMS/
 *********************************************************/
 

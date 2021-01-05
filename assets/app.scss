@@ -80,6 +80,17 @@ h1 {
     color: #9F9FCF;
 }
 
+a {
+    color: red;
+    font-size: 1.1em;
+    transition: all linear 300ms;
+    display: inline-block;
+}
+
+a:hover {
+    transform: scale(1.1);
+}
+
 
 /*********************************************************
                      GLOBAL FORM CSS

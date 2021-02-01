@@ -1,0 +1,15 @@
+{% extends 'layoutEmail.html.twig' %}
+
+{% block title %}{{ episode.title }}{% endblock %}
+
+{% block body %}
+    <h1 class="title">Wild-series</h1>
+
+    <h2 style="font-weight: normal; text-align: center;"><strong>{{ episode.season.program.title }}</strong> episode n°{{ episode.number }} release : <em>{{ episode.title }}</em></h2>
+
+    <h3>Synopsis</h3>
+
+    <p>{{ episode.synopsis }}</p>
+
+    <p><a class="my_link" href="http://localhost:8000{{ path("program_episode_show", { slug: episode.season.program.slug, seasonId: episode.season.id, episodeSlug: episode.slug }) }}">Episode {{ episode.number }} : <em>{{ episode.title }}</em></a></p>
+{% endblock %}

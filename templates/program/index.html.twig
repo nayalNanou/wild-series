@@ -11,8 +11,8 @@
             <h2 class="title2">{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
             <p>{{ program.summary }}</p>
             <p class="flex_wrap justify-content-around align-items-center mb-0">
-                <a class="voir_fiche" href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
-                <a class="image_voir_fiche d-block" href="{{ path("program_show", { id: program.id }) }}"><img src="{{ program.poster }}" alt="{{ program.title }}" class="image_fiche" /></a>
+                <a class="voir_fiche" href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
+                <a class="image_voir_fiche d-block" href="{{ path("program_show", { slug: program.slug }) }}"><img src="{{ program.poster }}" alt="{{ program.title }}" class="image_fiche" /></a>
             </p>
         </div>
     {% else %}

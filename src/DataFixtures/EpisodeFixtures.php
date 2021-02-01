@@ -11,9 +11,16 @@ use Faker;
 
 use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Service\Slugify;
 
 class EpisodeFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugify;
+
+    public function __construct(Slugify $slugify) {
+        $this->slugify = $slugify;
+    }
+
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('en_US');
@@ -28,6 +35,10 @@ class EpisodeFixtures extends Fixture implements DependentFixtureInterface
                 $episode = new Episode();
                 $episode->setSeason($this->getReference('season_' . $i));
                 $episode->setTitle(implode(' ', $faker->words(3)));
+
+                $slug = $this->slugify->generate($episode->getTitle());
+                $episode->setSlug($slug);
+
                 $episode->setNumber($j + 1);
                 $episode->setSynopsis($faker->paragraph(rand(3, 5)));
                 $manager->persist($episode);

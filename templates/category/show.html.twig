@@ -8,7 +8,7 @@
     <div class="container border">
         {% for program in matchedPrograms %}
             <div class="m-2 p-2 border">
-                <h2><a class="text-secondary" href="{{ path('program_show', {id: program.id}) }}">#{{ program.id }} {{ program.title }}</a></h2>
+                <h2><a class="text-secondary" href="{{ path('program_show', {slug: program.slug}) }}">#{{ program.id }} {{ program.title }}</a></h2>
                 <p>{{ program.summary }}</p>
             </div>
         {% else %}

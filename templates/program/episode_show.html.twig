@@ -10,6 +10,6 @@
 
         <p class="synopsis_episode">Synopsis : {{ episode.synopsis }}</p>
 
-        <p class="m-4"><a class="retour" href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">Retour</a></p>
+        <p class="m-4"><a class="retour" href="{{ path("program_season_show", { slug: program.slug, seasonId: season.id }) }}">Retour</a></p>
     </div>
 {% endblock %}

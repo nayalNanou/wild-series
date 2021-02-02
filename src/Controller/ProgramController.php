@@ -14,6 +14,8 @@ use App\Form\ProgramType;
 use App\Service\Slugify;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use App\Form\CommentType;
+use App\Entity\Comment;
 
 
 /**
@@ -122,12 +124,42 @@ class ProgramController extends AbstractController
      * @ParamConverter("season", class="App\Entity\Season", options={"mapping": {"seasonId": "id"}})
      * @ParamConverter("episode", class="App\Entity\Episode", options={"mapping": {"episodeSlug": "slug"}})
      */
-    public function showEpisode(Program $program, Season $season, Episode $episode)
+    public function showEpisode(Request $request, Program $program, Season $season, Episode $episode)
     {
+        $comment = new Comment();
+
+        $form = $this->createForm(CommentType::class, $comment);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+            $user = $this->getUser();
+
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $comment->setAuthor($user);
+            $comment->setEpisode($episode);
+            $comment->setDateComment(new \DateTime());
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+        }
+
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findBy(
+                ['episode' => $episode->getId()],
+                ['date_comment' => 'ASC']
+            );
+
         return $this->render('program/episode_show.html.twig', [
             'program' => $program,
             'season' => $season,
             'episode' => $episode,
+            'form' => $form->createView(),
+            'comments' => $comments,
         ]);
     }
 }

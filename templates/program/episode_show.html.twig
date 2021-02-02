@@ -11,5 +11,26 @@
         <p class="synopsis_episode">Synopsis : {{ episode.synopsis }}</p>
 
         <p class="m-4"><a class="retour" href="{{ path("program_season_show", { slug: program.slug, seasonId: season.id }) }}">Retour</a></p>
+
+        {% if app.user %}
+            <p>{{ app.user.email }}</p>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+            <input type="submit" value="Add comment" />
+            {{ form_end(form) }}
+        {% endif %}
+
+        <div class="episode-comment-section">
+            {% for comment in comments %}
+                <p>
+                    <span class="author">{{ comment.author.email }} <span class="date-of-the-comment">{{ comment.datecomment|date('Y-m-d h:i:s') }}</span></span>
+                    <span class="author-comment">{{ comment.comment }}</span>
+                    <span class="episode-rate">Rate : {{ comment.rate }}</span>
+                </p>
+            {% else %}
+                <p class="no-comments">No comments</p>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

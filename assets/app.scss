@@ -291,6 +291,36 @@ form {
     margin: 20px;
 }
 
+.episode-comment-section {
+    font-size: 1.2em;
+    text-align: left;
+    width: 100%;
+    padding: 20px;
+    background: #070707;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: white;
+    border-radius: 10px;
+
+    .author, author-comment, .episode-rate {
+        display: block;
+    }
+
+    .author {
+        font-weight: bold;
+        font-size: 0.9em;
+    }
+
+    .date-of-the-comment {
+        color: gray;
+    }
+
+    .no-comments {
+        font-size: 1.3em;
+        text-align: center;
+    }
+}
+
 
 /*********************************************************
                        ACTOR/{id}

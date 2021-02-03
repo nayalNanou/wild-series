@@ -331,3 +331,26 @@ form {
     margin: auto;
     font-size: $fontsize * 1.22;
 }
+
+
+/*********************************************************
+               PROGRAMS/{SLUG}/EDIT
+*********************************************************/
+
+
+div[id="program_actors"] {
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        background: gold;
+        width: 20px;
+        border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: red;
+        border-radius: 10px;
+    }
+}

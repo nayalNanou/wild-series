@@ -27,6 +27,11 @@
                     <span class="author">{{ comment.author.email }} <span class="date-of-the-comment">{{ comment.datecomment|date('Y-m-d h:i:s') }}</span></span>
                     <span class="author-comment">{{ comment.comment }}</span>
                     <span class="episode-rate">Rate : {{ comment.rate }}</span>
+                    {% if app.user %}
+                        {% if app.user.email == comment.author.email or is_granted("ROLE_ADMIN") %}
+                            <a href="{{ path("comment_delete", {id: comment.id}) }}">Delete</a>
+                        {% endif %}
+                    {% endif %}
                 </p>
             {% else %}
                 <p class="no-comments">No comments</p>

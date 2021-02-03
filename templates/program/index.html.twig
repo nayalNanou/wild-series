@@ -14,6 +14,9 @@
                 <a class="voir_fiche" href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
                 <a class="image_voir_fiche d-block" href="{{ path("program_show", { slug: program.slug }) }}"><img src="{{ program.poster }}" alt="{{ program.title }}" class="image_fiche" /></a>
             </p>
+            {% if is_granted("ROLE_ADMIN") %}
+                <p><a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a></p>
+            {% endif %}
         </div>
     {% else %}
         Aucune série trouvée.

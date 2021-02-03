@@ -16,6 +16,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use App\Form\CommentType;
 use App\Entity\Comment;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 /**
@@ -53,6 +54,7 @@ class ProgramController extends AbstractController
 
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
+            $program->setOwner($this->getUser());
 
             $entityManager->persist($program);
             $entityManager->flush();
@@ -160,6 +162,30 @@ class ProgramController extends AbstractController
             'episode' => $episode,
             'form' => $form->createView(),
             'comments' => $comments,
+        ]);
+    }
+
+    /**
+     * @Route("/{slug}/edit", name="edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Program $program): Response
+    {
+        if (!($this->getUser() == $program->getOwner()) && !in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            throw new AccessDeniedException('Only the owner can edit the program!');
+        }
+
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('program_index');
+        }
+
+        return $this->render('program/edit.html.twig', [
+            'program' => $program,
+            'form' => $form->createView(),
         ]);
     }
 }

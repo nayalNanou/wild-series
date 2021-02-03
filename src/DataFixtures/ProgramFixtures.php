@@ -8,6 +8,10 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Service\Slugify;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManager;
+
+
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     const PROGRAMS = [
@@ -125,6 +129,10 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $slug = $this->slugify->generate($program->getTitle());
             $program->setSlug($slug);
 
+            $user = $manager->getRepository(User::class)->findAll();
+            $user = $user[rand(0, count($user) - 1)];
+
+            $program->setOwner($user);
             $program->setSummary($data['summary']);
             $program->setPoster($data['poster']);
             $program->setCategory($this->getReference($data['category']));

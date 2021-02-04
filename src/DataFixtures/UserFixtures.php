@@ -11,31 +11,37 @@ class UserFixtures extends Fixture
 {
     const USERS = [
         [
+            'pseudo' => 'contributor',
             'email' => 'contributor@monsite.com',
             'roles' => ['ROLE_CONTRIBUTOR'],
             'password' => 'contributorpassword',
         ],
         [
+            'pseudo' => 'emma',
             'email' => 'emma@monsite.com',
             'roles' => ['ROLE_CONTRIBUTOR'],
             'password' => 'emmapassword',
         ],
         [
+            'pseudo' => 'jean',
             'email' => 'jean@monsite.com',
             'roles' => ['ROLE_CONTRIBUTOR'],
             'password' => 'jeanpassword',
         ],
         [
+            'pseudo' => 'camille',
             'email' => 'camille@monsite.com',
             'roles' => ['ROLE_CONTRIBUTOR'],
             'password' => 'camillepassword',
         ],
         [
+            'pseudo' => 'michel',
             'email' => 'michel@monsite.com',
             'roles' => ['ROLE_CONTRIBUTOR'],
             'password' => 'michelpassword',
         ],
         [
+            'pseudo' => 'admin',
             'email' => 'admin@monsite.com',
             'roles' => ['ROLE_ADMIN'],
             'password' => 'adminpassword',
@@ -53,6 +59,7 @@ class UserFixtures extends Fixture
     {
         foreach (self::USERS as $data) {
             $user = new User();
+            $user->setPseudo($data['pseudo']);
             $user->setEmail($data['email']);
             $user->setRoles($data['roles']);
             $user->setPassword($this->passwordEncoder->encodePassword(

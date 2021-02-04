@@ -1,5 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Bienvenue sur {{ website }}</h1>
+    <h1 class="display-1">{{ website }}</h1>
+
+    <div class="flex_wrap justify-content-around align-items-center">
+    {% for program in programs %}
+        <div class="program">
+            <h2 class="title2">{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <p>{{ program.summary }}</p>
+            <p class="flex_wrap justify-content-around align-items-center mb-0">
+                <a class="voir_fiche" href="{{ path("program_show", { slug: program.slug }) }}">Voir la fiche</a>
+                <a class="image_voir_fiche d-block" href="{{ path("program_show", { slug: program.slug }) }}"><img src="{{ program.poster }}" alt="{{ program.title }}" class="image_fiche" /></a>
+            </p>
+            {% if is_granted("ROLE_ADMIN") %}
+                <p><a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a></p>
+            {% endif %}
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    </div>
 {% endblock %}

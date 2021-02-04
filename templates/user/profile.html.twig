@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    {% if app.user %} 
+        <h1 class="display-3">{{ app.user.pseudo }}</h1>
+
+        <p class="text-danger w-50 mx-auto h3">Pseudo : {{ app.user.pseudo }}</p>
+        <p class="text-info w-50 mx-auto h3">Email : {{ app.user.email }}</p>
+        <div class="w-50 mx-auto h3">
+            <p class="text-success">Roles :</p>
+            <ul>
+                {% for role in app.user.roles %}
+                    <li>{{ role }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
